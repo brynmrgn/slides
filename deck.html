@@ -1,0 +1,61 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Slides</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@5.1.0/dist/reset.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@5.1.0/dist/reveal.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@5.1.0/dist/theme/white.css" id="theme">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@5.1.0/plugin/highlight/monokai.css">
+  <style>
+    .reveal h1, .reveal h2, .reveal h3 { text-transform: none; }
+    .reveal pre { width: 100%; }
+    .reveal pre code { max-height: 500px; }
+  </style>
+</head>
+<body>
+  <div class="reveal">
+    <div class="slides">
+      <section data-markdown data-separator="^\n---\n" data-separator-vertical="^\n--\n" data-separator-notes="^Note:">
+        <textarea data-template id="slides-content">
+        </textarea>
+      </section>
+    </div>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/reveal.js@5.1.0/dist/reveal.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/reveal.js@5.1.0/plugin/markdown/markdown.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/reveal.js@5.1.0/plugin/highlight/highlight.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/reveal.js@5.1.0/plugin/notes/notes.js"></script>
+  <script>
+    // Read the ?deck= parameter to load the right markdown file
+    const params = new URLSearchParams(window.location.search);
+    const deck = params.get('deck');
+
+    if (deck) {
+      fetch('decks/' + deck + '.md')
+        .then(r => {
+          if (!r.ok) throw new Error('Deck not found: ' + deck);
+          return r.text();
+        })
+        .then(md => {
+          document.getElementById('slides-content').textContent = md;
+          Reveal.initialize({
+            hash: true,
+            plugins: [RevealMarkdown, RevealHighlight, RevealNotes]
+          });
+        })
+        .catch(err => {
+          document.querySelector('.slides').innerHTML =
+            '<section><h2>Error</h2><p>' + err.message + '</p></section>';
+          Reveal.initialize();
+        });
+    } else {
+      document.querySelector('.slides').innerHTML =
+        '<section><h2>No deck specified</h2><p>Use <code>?deck=name</code> to load a deck.</p></section>';
+      Reveal.initialize();
+    }
+  </script>
+</body>
+</html>
