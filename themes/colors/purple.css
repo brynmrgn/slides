@@ -1,0 +1,76 @@
+/*
+ * Purple colour theme
+ * UK Parliament visual identity — purples, warm grey, mint.
+ *
+ * Colour palette (UK Parliament scheme):
+ *   Dark purple    #373051    Title/section bg, heading text
+ *   Light grey     #EBE9E8    Content slide bg
+ *   Mid purple     #615975    Muted accents
+ *   Mint           #96DCBE    Feature slide bg
+ *   Bright purple  #5F2CB3    Links
+ *   Orange         #FF7100    Accent
+ *   Blue           #0A78FF    Accent
+ *   Yellow         #FBCF20    Accent
+ *   Cyan           #46CFDB    Accent
+ *   Green          #00BA5D    Accent
+ *
+ * Variants:
+ *   light   = warm grey bg, purple text       (default)
+ *   dark    = dark purple bg, white text      (titles, section dividers)
+ *   feature = mint bg, purple text            (questions, key takeaways)
+ *
+ * Fonts: Georgia (headings), Tahoma (body) — matching Parliament template.
+ */
+
+:root {
+  /* ── Light (default) ── */
+  --slide-bg: #EBE9E8;
+  --slide-bg-alt: #d5d3d1;
+  --slide-text: #373051;
+  --slide-text-muted: #615975;
+  --slide-heading: #373051;
+  --slide-accent: #5F2CB3;
+  --slide-border: #d5d3d1;
+
+  /* ── Dark variant ── */
+  --variant-dark-bg: #373051;
+  --variant-dark-text: #ffffff;
+  --variant-dark-muted: rgba(255, 255, 255, 0.7);
+  --variant-dark-link: #96DCBE;
+
+  /* ── Feature variant ── */
+  --variant-feature-bg: #96DCBE;
+  --variant-feature-text: #373051;
+  --variant-feature-muted: #615975;
+  --variant-feature-link: #5F2CB3;
+
+  /* ── Typography ── */
+  --slide-font: "Open Sans", "Segoe UI", Verdana, sans-serif;
+  --slide-font-heading: "Open Sans", "Segoe UI", Verdana, sans-serif;
+  --slide-font-size: 1.8rem;
+  --slide-weight: 400;
+  --slide-weight-bold: 700;
+  --slide-line-height: 1.6;
+
+  /* ── Extended palette — available for custom use ── */
+  --purple-primary: #373051;
+  --purple-grey: #EBE9E8;
+  --purple-mid: #615975;
+  --purple-mint: #96DCBE;
+  --purple-bright: #5F2CB3;
+  --purple-orange: #FF7100;
+  --purple-blue: #0A78FF;
+  --purple-yellow: #FBCF20;
+  --purple-cyan: #46CFDB;
+  --purple-green: #00BA5D;
+}
+
+/* Table header colour */
+.reveal table th {
+  color: var(--purple-primary);
+}
+
+/* Progress bar */
+.reveal .progress {
+  color: var(--purple-primary);
+}

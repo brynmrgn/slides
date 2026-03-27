@@ -4,15 +4,32 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="base-path" content=".">
-  <title>Data Library</title>
+  <title>Agenda Sample</title>
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@5.1.0/dist/reset.css">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@5.1.0/dist/reveal.css">
   <link rel="stylesheet" href="themes/base.css">
-  <link rel="stylesheet" href="themes/colors/green.css" id="color-theme">
-  <link rel="stylesheet" href="themes/layouts/standard.css" id="layout-theme">
+  <link rel="stylesheet" href="themes/colors/plain.css" id="color-theme">
+  <link rel="stylesheet" href="themes/layouts/agenda.css" id="layout-theme">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@5.1.0/plugin/highlight/monokai.css">
 </head>
 <body>
+  <!--
+    AGENDA SIDEBAR
+    - Each <li> has a data-section matching the horizontal slide index (0-based)
+    - Update these to match your slide structure
+    - The active item highlights automatically as you navigate
+  -->
+  <div class="agenda-sidebar">
+    <div class="sidebar-title">Agenda</div>
+    <ul>
+      <li data-section="0" class="active">Introduction</li>
+      <li data-section="1">Background</li>
+      <li data-section="2">The Proposal</li>
+      <li data-section="3">Timeline</li>
+      <li data-section="4">Questions</li>
+    </ul>
+  </div>
+
   <div class="reveal">
     <div class="slides">
       <section data-markdown data-separator="^\n---\n" data-separator-vertical="^\n--\n" data-separator-notes="^Note:">
@@ -28,7 +45,7 @@
   <script src="https://cdn.jsdelivr.net/npm/reveal.js@5.1.0/plugin/notes/notes.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/mermaid@11/dist/mermaid.min.js"></script>
   <script src="themes/variants.js"></script>
-  <script data-deck="datalibrary">
+  <script data-deck="agenda-sample">
     mermaid.initialize({
       startOnLoad: false,
       theme: 'neutral',
@@ -71,6 +88,28 @@
           plugins: [RevealMarkdown, RevealHighlight, RevealNotes]
         }).then(() => {
           mermaid.run();
+
+          // Highlight the active sidebar item on slide change
+          const items = document.querySelectorAll('.agenda-sidebar li[data-section]');
+
+          function updateSidebar() {
+            const h = Reveal.getIndices().h;
+            items.forEach(item => {
+              const section = parseInt(item.getAttribute('data-section'));
+              item.classList.toggle('active', section === h);
+            });
+          }
+
+          Reveal.on('slidechanged', updateSidebar);
+
+          items.forEach(item => {
+            item.addEventListener('click', () => {
+              const section = parseInt(item.getAttribute('data-section'));
+              Reveal.slide(section, 0);
+            });
+          });
+
+          updateSidebar();
         });
       })
       .catch(err => {

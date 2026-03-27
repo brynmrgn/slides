@@ -1,0 +1,76 @@
+/*
+ * Green colour theme
+ * House of Commons visual identity — greens, warm grey, peach.
+ *
+ * Colour palette (HOC 1):
+ *   Primary green  #006548    Title/section bg, heading text
+ *   Light grey     #EBE9E8    Content slide bg
+ *   Sage           #80B2A3    Muted accents
+ *   Peach          #FDE2CF    Closing slide bg
+ *   Blue           #0A78FF    Links
+ *   Orange         #FF7100    Accent
+ *   Mint           #45F5B3    Links on dark bg
+ *   Yellow         #FBCF20    Accent
+ *   Cyan           #46CFDB    Accent
+ *   Green          #00BA5D    Accent
+ *
+ * Variants:
+ *   light   = warm grey bg, green text        (default)
+ *   dark    = HoC green bg, white text        (titles, section dividers)
+ *   feature = peach bg, green text            (questions, key takeaways)
+ *
+ * Fonts: Georgia (headings), Tahoma (body).
+ */
+
+:root {
+  /* ── Light (default) ── */
+  --slide-bg: #EBE9E8;
+  --slide-bg-alt: #d5d3d1;
+  --slide-text: #006548;
+  --slide-text-muted: #80B2A3;
+  --slide-heading: #006548;
+  --slide-accent: #0A78FF;
+  --slide-border: #d5d3d1;
+
+  /* ── Dark variant ── */
+  --variant-dark-bg: #006548;
+  --variant-dark-text: #ffffff;
+  --variant-dark-muted: rgba(255, 255, 255, 0.7);
+  --variant-dark-link: #45F5B3;
+
+  /* ── Feature variant ── */
+  --variant-feature-bg: #FDE2CF;
+  --variant-feature-text: #006548;
+  --variant-feature-muted: #80B2A3;
+  --variant-feature-link: #0A78FF;
+
+  /* ── Typography ── */
+  --slide-font: "Open Sans", "Segoe UI", Verdana, sans-serif;
+  --slide-font-heading: "Open Sans", "Segoe UI", Verdana, sans-serif;
+  --slide-font-size: 1.8rem;
+  --slide-weight: 400;
+  --slide-weight-bold: 700;
+  --slide-line-height: 1.6;
+
+  /* ── Extended palette — available for custom use ── */
+  --green-primary: #006548;
+  --green-grey: #EBE9E8;
+  --green-sage: #80B2A3;
+  --green-peach: #FDE2CF;
+  --green-blue: #0A78FF;
+  --green-orange: #FF7100;
+  --green-mint: #45F5B3;
+  --green-yellow: #FBCF20;
+  --green-cyan: #46CFDB;
+  --green-bright: #00BA5D;
+}
+
+/* Table header colour */
+.reveal table th {
+  color: var(--green-primary);
+}
+
+/* Progress bar */
+.reveal .progress {
+  color: var(--green-primary);
+}

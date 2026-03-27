@@ -1,0 +1,78 @@
+/*
+ * Agenda sidebar layout
+ * Adds a persistent navigation sidebar showing presentation structure.
+ *
+ * Requires sidebar HTML in the deck wrapper — see agenda-sample.html.
+ * Works with any colour theme; picks up --slide-* variables.
+ */
+
+.agenda-sidebar {
+  position: fixed;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  width: 220px;
+  background: var(--slide-bg-alt, #f0f0ec);
+  border-right: 1px solid var(--slide-border, #e0e0e0);
+  padding: 2rem 0;
+  z-index: 100;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  font-family: var(--slide-font, "Inter", sans-serif);
+}
+
+.agenda-sidebar ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.agenda-sidebar li {
+  padding: 0.6rem 1.5rem;
+  font-size: 0.85rem;
+  color: var(--slide-text-muted, #888);
+  cursor: pointer;
+  transition: color 0.2s, background 0.2s;
+  border-left: 3px solid transparent;
+  line-height: 1.4;
+}
+
+.agenda-sidebar li:hover {
+  color: var(--slide-text, #1a1a1a);
+  background: rgba(128, 128, 128, 0.06);
+}
+
+.agenda-sidebar li.active {
+  color: var(--slide-text, #1a1a1a);
+  font-weight: 600;
+  border-left-color: var(--slide-accent, #2563eb);
+  background: rgba(128, 128, 128, 0.06);
+}
+
+.agenda-sidebar .sidebar-title {
+  padding: 0 1.5rem 1rem;
+  font-size: 0.75rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--slide-text-muted, #888);
+  opacity: 0.6;
+}
+
+/* Push slides right to make room for sidebar */
+.reveal {
+  margin-left: 220px;
+  width: calc(100% - 220px) !important;
+}
+
+/* Hide sidebar on narrow screens */
+@media (max-width: 900px) {
+  .agenda-sidebar {
+    display: none;
+  }
+  .reveal {
+    margin-left: 0;
+    width: 100% !important;
+  }
+}

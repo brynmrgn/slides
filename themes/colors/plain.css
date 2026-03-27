@@ -1,0 +1,98 @@
+/*
+ * Plain colour theme
+ * Minimal black-on-white with yellow highlight utility.
+ *
+ * Variants:
+ *   light   = white bg, black text              (default)
+ *   dark    = black bg, white text              (titles, section dividers)
+ *   feature = soft yellow bg, black text        (questions, key takeaways)
+ *
+ * Highlight usage in Markdown:
+ *   <mark>highlighted text</mark>
+ *   <mark class="block">Full-line highlight</mark>
+ */
+
+:root {
+  /* ── Light (default) ── */
+  --slide-bg: #ffffff;
+  --slide-bg-alt: #f5f5f5;
+  --slide-text: #1a1a1a;
+  --slide-text-muted: #888888;
+  --slide-heading: #1a1a1a;
+  --slide-accent: #1a1a1a;
+  --slide-border: #e0e0e0;
+
+  /* ── Dark variant ── */
+  --variant-dark-bg: #1a1a1a;
+  --variant-dark-text: #ffffff;
+  --variant-dark-muted: rgba(255, 255, 255, 0.6);
+  --variant-dark-link: #ffffff;
+
+  /* ── Feature variant ── */
+  --variant-feature-bg: #fff9e6;
+  --variant-feature-text: #1a1a1a;
+  --variant-feature-muted: #888888;
+  --variant-feature-link: #1a1a1a;
+
+  /* ── Typography ── */
+  --slide-font: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  --slide-font-heading: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  --slide-font-size: 2rem;
+  --slide-weight: 400;
+  --slide-weight-bold: 600;
+  --slide-line-height: 1.6;
+
+  --plain-highlight: #fff176;
+  --plain-highlight-strong: #ffee58;
+}
+
+/* ── Links — understated ──────────────────────── */
+
+.reveal a {
+  color: var(--slide-text);
+  text-decoration-color: var(--slide-text-muted);
+}
+
+.reveal a:hover {
+  text-decoration-color: var(--slide-text);
+}
+
+/* ── Highlight ────────────────────────────────── */
+
+.reveal mark {
+  background: var(--plain-highlight);
+  color: var(--slide-text);
+  padding: 0.05em 0.25em;
+  border-radius: 0.15em;
+}
+
+.reveal mark.block {
+  display: block;
+  padding: 0.4em 0.6em;
+  margin: 0.4em 0;
+  background: var(--plain-highlight);
+  border-radius: 0.25em;
+}
+
+.reveal mark.strong,
+.reveal .highlight-strong {
+  background: var(--plain-highlight-strong);
+}
+
+/* ── Blockquotes — lighter ────────────────────── */
+
+.reveal blockquote {
+  border-left-color: var(--slide-border);
+}
+
+/* ── Progress bar — subtle ────────────────────── */
+
+.reveal .progress {
+  color: var(--slide-text-muted);
+}
+
+/* Yellow highlight still works on dark variant */
+.reveal .dark mark {
+  background: var(--plain-highlight);
+  color: #1a1a1a;
+}

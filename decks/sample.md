@@ -54,11 +54,33 @@ Use standard Markdown image syntax:
 
 ---
 
+## Diagrams with Mermaid
+
+```mermaid
+graph LR
+    A[Write Markdown] --> B[Push to GitHub]
+    B --> C[GitHub Pages]
+    C --> D[Present]
+```
+
+--
+
+### More diagram types
+
+```mermaid
+sequenceDiagram
+    Author->>GitHub: Push slides
+    GitHub->>Pages: Build & deploy
+    Pages-->>Audience: Serve presentation
+```
+
+---
+
 ## Themes
 
-Change the theme in `deck.html` by swapping the CSS link.
+Swap the CSS link in your deck's HTML file.
 
-Built-in options: `white`, `black`, `league`, `beige`, `sky`, `night`, `serif`, `simple`, `solarized`, `moon`, `dracula`
+Custom themes: `clean`, `dark` — or create your own.
 
 ---
 

@@ -1,0 +1,417 @@
+/*
+ * Slide base — shared typography, resets, and structural styles.
+ * Load this first, then a colour theme, then optionally a layout.
+ *
+ *   <link rel="stylesheet" href="themes/base.css">
+ *   <link rel="stylesheet" href="themes/colors/green.css">
+ *   <link rel="stylesheet" href="themes/layouts/standard.css">
+ */
+
+@import url('fonts/fonts.css');
+
+/* ── Reveal overrides ─────────────────────────── */
+
+.reveal {
+  font-family: var(--slide-font, "Open Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif);
+  font-weight: var(--slide-weight, 400);
+  font-size: var(--slide-font-size, 2rem);
+  color: var(--slide-text);
+}
+
+.reveal .slides {
+  text-align: left;
+}
+
+.reveal .slides section {
+  top: 0 !important;
+  padding: 2rem 3rem;
+}
+
+body {
+  background: var(--slide-bg);
+}
+
+.reveal .slide-background {
+  background: var(--slide-bg);
+}
+
+/* ── Headings ─────────────────────────────────── */
+
+.reveal h1,
+.reveal h2,
+.reveal h3,
+.reveal h4 {
+  font-family: var(--slide-font-heading, var(--slide-font));
+  font-weight: var(--slide-weight-bold, 600);
+  color: var(--slide-heading, var(--slide-text));
+  text-transform: none;
+  text-align: left;
+  letter-spacing: -0.01em;
+  line-height: 1.3;
+  margin-bottom: 1rem;
+}
+
+.reveal h1 { font-size: 2.2em; }
+.reveal h2 { font-size: 1.6em; }
+.reveal h3 { font-size: 1.2em; }
+
+/* ── Body text ────────────────────────────────── */
+
+.reveal p {
+  line-height: var(--slide-line-height, 1.6);
+  margin-bottom: 0.8em;
+}
+
+/* ── Lists ────────────────────────────────────── */
+
+.reveal ul,
+.reveal ol {
+  margin-left: 1.5em;
+  margin-bottom: 0.8em;
+}
+
+.reveal li {
+  margin-bottom: 0.4em;
+  line-height: var(--slide-line-height, 1.6);
+}
+
+/* ── Links ────────────────────────────────────── */
+
+.reveal a {
+  color: var(--slide-accent);
+  text-decoration: underline;
+  text-decoration-thickness: 1px;
+  text-underline-offset: 2px;
+}
+
+.reveal a:hover {
+  opacity: 0.8;
+}
+
+/* ── Code ─────────────────────────────────────── */
+
+.reveal pre {
+  width: 100%;
+  background: var(--slide-bg-alt);
+  border: 1px solid var(--slide-border);
+  border-radius: 0.25rem;
+  padding: 1rem;
+  font-size: 0.55em;
+  box-shadow: none;
+}
+
+.reveal code {
+  font-family: "SF Mono", Monaco, "Cascadia Code", "Roboto Mono", Consolas, monospace;
+}
+
+.reveal p code,
+.reveal li code {
+  background: var(--slide-bg-alt);
+  padding: 0.1em 0.3em;
+  border-radius: 0.2rem;
+  font-size: 0.9em;
+}
+
+/* ── Blockquotes ──────────────────────────────── */
+
+.reveal blockquote {
+  border-left: 3px solid var(--slide-accent);
+  padding: 0.5em 1em;
+  background: var(--slide-bg-alt);
+  font-style: normal;
+  width: auto;
+  box-shadow: none;
+  text-align: left;
+}
+
+/* ── Images ───────────────────────────────────── */
+
+.reveal img {
+  border: none;
+  box-shadow: none;
+  max-height: 60vh;
+}
+
+/* ── Fragments ────────────────────────────────── */
+
+.reveal .fragment.visible {
+  opacity: 1;
+}
+
+/* ── Slide number ─────────────────────────────── */
+
+.reveal .slide-number {
+  font-family: var(--slide-font);
+  font-size: 0.6rem;
+  color: var(--slide-text-muted);
+  background: transparent;
+}
+
+/* ── Progress bar ─────────────────────────────── */
+
+.reveal .progress {
+  color: var(--slide-accent);
+  height: 3px;
+}
+
+/* ── Tables ───────────────────────────────────── */
+
+.reveal table {
+  border-collapse: collapse;
+}
+
+.reveal table th,
+.reveal table td {
+  text-align: left;
+  padding: 0.4em 0.8em;
+  border-bottom: 1px solid var(--slide-border);
+}
+
+.reveal table th {
+  font-weight: var(--slide-weight-bold, 600);
+}
+
+/* ── Horizontal rules ─────────────────────────── */
+
+.reveal hr {
+  border: none;
+  border-top: 2px solid var(--slide-border);
+  margin: 1.2em 0;
+  width: 100%;
+}
+
+/* ── Title slide ──────────────────────────────── */
+/*
+ * Vertically centred, left-aligned. Supports a .slide-footer
+ * element pinned to the bottom for dates, subtitles, etc.
+ *
+ * In Markdown:
+ *   <!-- .slide: class="title-slide" -->
+ *   # My Title
+ *   <div class="slide-footer">25 March 2026</div>
+ */
+
+/*
+ * Title slides use Reveal's native center: true behaviour, applied
+ * per-slide via data-center. Content slides use center: false (set
+ * in Reveal.initialize) so text starts at the top.
+ *
+ * Footer: use <small> as the last element — positioned absolutely.
+ */
+
+.reveal .slides section.title-slide {
+  top: 0 !important;
+  display: flex !important;
+  flex-direction: column !important;
+  height: 100% !important;
+  /* no justify-content — centering is done via flex:1 bookends */
+}
+
+/* Top spacer pushes heading to the middle */
+.reveal .slides section.title-slide::before {
+  content: '';
+  flex: 1;
+}
+
+/* Date line fills the bottom spacer and aligns text to the very bottom */
+.reveal .slides section.title-slide p:last-of-type {
+  flex: 1;
+  display: flex !important;
+  align-items: flex-end !important;
+  font-size: 0.5em;
+  color: var(--slide-text-muted);
+  font-weight: var(--slide-weight, 400);
+  margin: 0;
+}
+
+.reveal .dark.title-slide p:last-of-type {
+  color: var(--variant-dark-muted, rgba(255, 255, 255, 0.7));
+}
+
+/* ── Slide variants ───────────────────────────── */
+/*
+ * Three semantic variants — each colour theme defines the colours.
+ * The same markdown works across all themes.
+ *
+ *   <!-- .slide: class="light" -->    ← default (explicit)
+ *   <!-- .slide: class="dark" -->     ← title / section divider
+ *   <!-- .slide: class="feature" -->  ← questions / key takeaway / call to action
+ *
+ * Each colour theme sets:
+ *   --variant-dark-bg, --variant-dark-text, --variant-dark-muted
+ *   --variant-feature-bg, --variant-feature-text, --variant-feature-muted
+ */
+
+/* Light is the default — no extra class needed.
+ * Dark and feature backgrounds: use data-background-color in markdown.
+ * The CSS below handles text colours only. */
+
+.reveal .dark,
+.reveal .dark h1,
+.reveal .dark h2,
+.reveal .dark h3,
+.reveal .dark h4,
+.reveal .dark p,
+.reveal .dark li {
+  color: var(--variant-dark-text, #ffffff);
+}
+
+.reveal .dark a {
+  color: var(--variant-dark-link, rgba(255, 255, 255, 0.8));
+}
+
+.reveal .dark pre {
+  background: rgba(255, 255, 255, 0.1);
+  border-color: rgba(255, 255, 255, 0.2);
+}
+
+.reveal .dark code {
+  color: var(--variant-dark-text, #ffffff);
+}
+
+.reveal .dark blockquote {
+  border-left-color: rgba(255, 255, 255, 0.4);
+  background: rgba(255, 255, 255, 0.08);
+  color: var(--variant-dark-text, #ffffff);
+}
+
+.reveal .dark hr {
+  border-top-color: rgba(255, 255, 255, 0.4);
+}
+
+.reveal .dark .slide-footer,
+.reveal .dark small {
+  color: var(--variant-dark-muted, rgba(255, 255, 255, 0.7));
+}
+
+.reveal .dark table th,
+.reveal .dark table td {
+  border-bottom-color: rgba(255, 255, 255, 0.2);
+}
+
+.reveal .feature,
+.reveal .feature h1,
+.reveal .feature h2,
+.reveal .feature h3,
+.reveal .feature h4,
+.reveal .feature p,
+.reveal .feature li {
+  color: var(--variant-feature-text, var(--slide-text));
+}
+
+.reveal .feature a {
+  color: var(--variant-feature-link, var(--slide-accent));
+}
+
+.reveal .feature .slide-footer {
+  color: var(--variant-feature-muted, var(--slide-text-muted));
+}
+
+/* ── Light-text utility (for background images etc.) ── */
+
+.reveal .light-text,
+.reveal .light-text h1,
+.reveal .light-text h2,
+.reveal .light-text h3,
+.reveal .light-text h4,
+.reveal .light-text p,
+.reveal .light-text li {
+  color: #ffffff;
+}
+
+.reveal .light-text a {
+  color: rgba(255, 255, 255, 0.8);
+}
+
+.reveal .light-text pre {
+  background: rgba(255, 255, 255, 0.1);
+  border-color: rgba(255, 255, 255, 0.2);
+}
+
+.reveal .light-text code {
+  color: #ffffff;
+}
+
+.reveal .light-text .slide-footer {
+  color: rgba(255, 255, 255, 0.7);
+}
+
+/* ── Flow diagram ────────────────────────────── */
+/*
+ * Horizontal process flow — boxes with arrows between them.
+ *
+ *   <div class="flow">
+ *     <div class="flow-step">Step one</div>
+ *     <div class="flow-step">Step two</div>
+ *   </div>
+ */
+
+.reveal .flow {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0;
+  margin-top: 2em;
+}
+
+.reveal .flow .flow-step {
+  background: var(--variant-dark-bg);
+  color: #fff;
+  padding: 1em;
+  width: 160px;
+  text-align: center;
+  border-radius: 0.3em;
+  font-size: 0.7em;
+}
+
+.reveal .flow .flow-arrow {
+  font-size: 1.5em;
+  padding: 0 0.3em;
+  color: var(--slide-text);
+}
+
+/* ── Overlay panel (for content over background images) ── */
+/*
+ * Use class="overlay" on a div to get a semi-transparent panel
+ * in the theme's dark colour. Text inside is white.
+ *
+ *   <div class="overlay">
+ *     <h2>Heading</h2>
+ *     <p>Content over a background image</p>
+ *   </div>
+ */
+
+.reveal .overlay {
+  background: color-mix(in srgb, var(--variant-dark-bg) 85%, transparent);
+  padding: 1.5em 2em;
+  border-radius: 0.3em;
+  color: #fff;
+}
+
+.reveal .overlay h1,
+.reveal .overlay h2,
+.reveal .overlay h3,
+.reveal .overlay h4,
+.reveal .overlay p,
+.reveal .overlay li {
+  color: #fff;
+}
+
+/* ── Mermaid diagrams ─────────────────────────── */
+
+.reveal .mermaid {
+  max-width: 100%;
+  overflow: visible;
+}
+
+.reveal .mermaid svg {
+  max-width: 100%;
+  max-height: 65vh;
+  height: auto;
+}
+
+.reveal .mermaid .nodeLabel {
+  white-space: normal;
+  max-width: 150px;
+  word-wrap: break-word;
+}

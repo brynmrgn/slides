@@ -1,0 +1,9 @@
+/*
+ * Standard layout — default slide structure.
+ * Left-aligned text, no sidebar, no special positioning.
+ * This is the baseline; load it when you don't need anything else.
+ */
+
+/* Nothing additional needed — base.css handles all standard layout.
+   This file exists so every deck explicitly declares its layout,
+   and as a place to add standard-layout-specific tweaks later. */

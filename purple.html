@@ -3,12 +3,11 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="base-path" content=".">
-  <title>Data Library</title>
+  <title>Slides</title>
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@5.1.0/dist/reset.css">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@5.1.0/dist/reveal.css">
   <link rel="stylesheet" href="themes/base.css">
-  <link rel="stylesheet" href="themes/colors/green.css" id="color-theme">
+  <link rel="stylesheet" href="themes/colors/purple.css" id="color-theme">
   <link rel="stylesheet" href="themes/layouts/standard.css" id="layout-theme">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@5.1.0/plugin/highlight/monokai.css">
 </head>
@@ -28,11 +27,11 @@
   <script src="https://cdn.jsdelivr.net/npm/reveal.js@5.1.0/plugin/notes/notes.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/mermaid@11/dist/mermaid.min.js"></script>
   <script src="themes/variants.js"></script>
-  <script data-deck="datalibrary">
+  <script>
     mermaid.initialize({
       startOnLoad: false,
       theme: 'neutral',
-      fontFamily: 'Inter, sans-serif',
+      fontFamily: 'Tahoma, sans-serif',
       flowchart: { useMaxWidth: true, htmlLabels: true, wrap: true },
       sequence: { useMaxWidth: true, wrap: true }
     });
@@ -52,32 +51,39 @@
     }
 
     const scriptTag = document.querySelector('script[data-deck]');
-    const deck = scriptTag.getAttribute('data-deck');
-    const basePath = document.querySelector('meta[name="base-path"]');
-    const base = basePath ? basePath.getAttribute('content') : '.';
-    fetch(base + '/decks/' + deck + '.md')
-      .then(r => {
-        if (!r.ok) throw new Error('Deck not found: ' + deck);
-        return r.text();
-      })
-      .then(md => {
-        document.getElementById('slides-content').textContent = preprocessMermaid(md);
-        Reveal.initialize({
-          hash: true,
-          center: false,
-          transition: 'none',
-          transitionSpeed: 'fast',
-          backgroundTransition: 'none',
-          plugins: [RevealMarkdown, RevealHighlight, RevealNotes]
-        }).then(() => {
-          mermaid.run();
+    const params = new URLSearchParams(window.location.search);
+    const deck = (scriptTag && scriptTag.getAttribute('data-deck')) || params.get('deck');
+
+    if (deck) {
+      document.title = deck.replace(/[-_]/g, ' ').replace(/\b\w/g, c => c.toUpperCase());
+      fetch('./decks/' + deck + '.md')
+        .then(r => {
+          if (!r.ok) throw new Error('Deck not found: ' + deck);
+          return r.text();
+        })
+        .then(md => {
+          document.getElementById('slides-content').textContent = preprocessMermaid(md);
+          Reveal.initialize({
+            hash: true,
+            center: false,
+            transition: 'none',
+            transitionSpeed: 'fast',
+            backgroundTransition: 'none',
+            plugins: [RevealMarkdown, RevealHighlight, RevealNotes]
+          }).then(() => {
+            mermaid.run();
+          });
+        })
+        .catch(err => {
+          document.querySelector('.slides').innerHTML =
+            '<section><h2>Error</h2><p>' + err.message + '</p></section>';
+          Reveal.initialize();
         });
-      })
-      .catch(err => {
-        document.querySelector('.slides').innerHTML =
-          '<section><h2>Error</h2><p>' + err.message + '</p></section>';
-        Reveal.initialize();
-      });
+    } else {
+      document.querySelector('.slides').innerHTML =
+        '<section><h2>No deck specified</h2><p>Use <code>?deck=name</code> to load a deck.</p></section>';
+      Reveal.initialize();
+    }
   </script>
 </body>
 </html>

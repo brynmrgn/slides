@@ -6,13 +6,10 @@
   <title>Slides</title>
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@5.1.0/dist/reset.css">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@5.1.0/dist/reveal.css">
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@5.1.0/dist/theme/white.css" id="theme">
+  <link rel="stylesheet" href="themes/base.css">
+  <link rel="stylesheet" href="themes/colors/plain.css" id="color-theme">
+  <link rel="stylesheet" href="themes/layouts/standard.css" id="layout-theme">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@5.1.0/plugin/highlight/monokai.css">
-  <style>
-    .reveal h1, .reveal h2, .reveal h3 { text-transform: none; }
-    .reveal pre { width: 100%; }
-    .reveal pre code { max-height: 500px; }
-  </style>
 </head>
 <body>
   <div class="reveal">
@@ -28,16 +25,36 @@
   <script src="https://cdn.jsdelivr.net/npm/reveal.js@5.1.0/plugin/markdown/markdown.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/reveal.js@5.1.0/plugin/highlight/highlight.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/reveal.js@5.1.0/plugin/notes/notes.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/mermaid@11/dist/mermaid.min.js"></script>
+  <script src="themes/variants.js"></script>
   <script>
-    // Determine which deck to load:
-    // 1. From a data-deck attribute on the script tag (for per-deck HTML files)
-    // 2. From a ?deck= query parameter
+    mermaid.initialize({
+      startOnLoad: false,
+      theme: 'neutral',
+      fontFamily: 'Inter, sans-serif',
+      flowchart: { useMaxWidth: true, htmlLabels: true, wrap: true },
+      sequence: { useMaxWidth: true, wrap: true }
+    });
+
+    function dedent(text) {
+      const lines = text.split('\n');
+      const minIndent = lines
+        .filter(l => l.trim().length > 0)
+        .reduce((min, l) => Math.min(min, l.match(/^\s*/)[0].length), Infinity);
+      return lines.map(l => l.slice(minIndent)).join('\n').trim();
+    }
+
+    function preprocessMermaid(md) {
+      return md.replace(/```mermaid\n([\s\S]*?)```/g, function(match, content) {
+        return '<div class="mermaid">\n' + dedent(content) + '\n</div>';
+      });
+    }
+
     const scriptTag = document.querySelector('script[data-deck]');
     const params = new URLSearchParams(window.location.search);
     const deck = (scriptTag && scriptTag.getAttribute('data-deck')) || params.get('deck');
 
     if (deck) {
-      // Resolve the path to the markdown file relative to the site root
       const basePath = document.querySelector('meta[name="base-path"]');
       const base = basePath ? basePath.getAttribute('content') : '.';
       fetch(base + '/decks/' + deck + '.md')
@@ -46,10 +63,16 @@
           return r.text();
         })
         .then(md => {
-          document.getElementById('slides-content').textContent = md;
+          document.getElementById('slides-content').textContent = preprocessMermaid(md);
           Reveal.initialize({
             hash: true,
+            center: false,
+            transition: 'none',
+            transitionSpeed: 'fast',
+            backgroundTransition: 'none',
             plugins: [RevealMarkdown, RevealHighlight, RevealNotes]
+          }).then(() => {
+            mermaid.run();
           });
         })
         .catch(err => {
