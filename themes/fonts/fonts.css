@@ -1,0 +1,56 @@
+/*
+ * Self-hosted fonts — no external requests to Google.
+ *
+ * To add the font files:
+ *   1. Go to https://gwfh.mranftl.com/fonts/open-sans?subsets=latin
+ *   2. Select weights 400 and 600
+ *   3. Download the zip
+ *   4. Extract the .woff2 files into this folder
+ *   5. Repeat for Inter if needed:
+ *      https://gwfh.mranftl.com/fonts/inter?subsets=latin
+ *
+ * Expected files:
+ *   open-sans-v40-latin-regular.woff2
+ *   open-sans-v40-latin-600.woff2
+ *   inter-v18-latin-regular.woff2
+ *   inter-v18-latin-600.woff2
+ *
+ * The version numbers (v40, v18) may differ — just update
+ * the filenames below to match what you downloaded.
+ */
+
+/* Open Sans — regular (400) */
+@font-face {
+  font-family: 'Open Sans';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url('open-sans-v40-latin-regular.woff2') format('woff2');
+}
+
+/* Open Sans — semi-bold (600) */
+@font-face {
+  font-family: 'Open Sans';
+  font-style: normal;
+  font-weight: 600;
+  font-display: swap;
+  src: url('open-sans-v40-latin-600.woff2') format('woff2');
+}
+
+/* Inter — regular (400) */
+@font-face {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url('inter-v18-latin-regular.woff2') format('woff2');
+}
+
+/* Inter — semi-bold (600) */
+@font-face {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 600;
+  font-display: swap;
+  src: url('inter-v18-latin-600.woff2') format('woff2');
+}

@@ -1,0 +1,275 @@
+[
+  {
+    "objectID": "index.html",
+    "href": "index.html",
+    "title": "Slide Decks",
+    "section": "",
+    "text": "Sample\nParliamentary Data Library\nPublication tool proof of concept\nAI tools in research work"
+  },
+  {
+    "objectID": "index.html#presentations",
+    "href": "index.html#presentations",
+    "title": "Slide Decks",
+    "section": "",
+    "text": "Sample\nParliamentary Data Library\nPublication tool proof of concept\nAI tools in research work"
+  },
+  {
+    "objectID": "decks/publication-tool.html#current-workflow",
+    "href": "decks/publication-tool.html#current-workflow",
+    "title": "Publication tool proof of concept",
+    "section": "Current workflow",
+    "text": "Current workflow\n\n\nAuthor writes in Word\n\n\n→\n\n\nCreates PDF\n\n\n→\n\n\nOpens application, uploads PDF\n\n\n→\n\n\nPublishes"
+  },
+  {
+    "objectID": "decks/publication-tool.html#section",
+    "href": "decks/publication-tool.html#section",
+    "title": "Publication tool proof of concept",
+    "section": "",
+    "text": "Problem statements\n\n\n\nFull briefings not available as html\n\n\nManual process for creating PDFs\n\n\nCost of Adobe Acrobat licences\n\n\nComplex, fragile, templates\n\n\n\nMore problems? Add to the chat."
+  },
+  {
+    "objectID": "decks/publication-tool.html#assumptions-check-them",
+    "href": "decks/publication-tool.html#assumptions-check-them",
+    "title": "Publication tool proof of concept",
+    "section": "Assumptions (check them)",
+    "text": "Assumptions (check them)\n\nCustomers need printable version\nWe will still want to make briefings available in hard copy\nWe still need to update documents\nAny more?"
+  },
+  {
+    "objectID": "decks/publication-tool.html#proof-of-concept-scope",
+    "href": "decks/publication-tool.html#proof-of-concept-scope",
+    "title": "Publication tool proof of concept",
+    "section": "Proof of concept: scope",
+    "text": "Proof of concept: scope\n\nWord to HTML conversion\nHTML to PDF conversion\nRe-editing in basic Word templates\n\nNot considering:\n\nOther authoring tools\nSupport model"
+  },
+  {
+    "objectID": "decks/publication-tool.html#word-to-html",
+    "href": "decks/publication-tool.html#word-to-html",
+    "title": "Publication tool proof of concept",
+    "section": "Word to HTML",
+    "text": "Word to HTML\n\nChosen option: Mammoth package in Python\nWidely used; simple; clean html; configurable\nhttps://github.com/mwilliamson/python-mammoth\nmammoth document.docx output.html --style-map=custom-style-map\n✅ Full briefings available as html (with some editing)"
+  },
+  {
+    "objectID": "decks/publication-tool.html#html-to-pdf",
+    "href": "decks/publication-tool.html#html-to-pdf",
+    "title": "Publication tool proof of concept",
+    "section": "HTML to PDF",
+    "text": "HTML to PDF\n\nCSS can handle print layouts\nPrint function in browser applies styles\nMore functionality available through scripting\nOptions: Prince XML; Docraptor; WeasyPrint\nChoice: WeasyPrint — free; footnotes, TOCs, accessible, PDF bookmarks\n\n🛑 Need to build application to test!\n\nTo produce PDFs, we need more than just content — we need author, images, dates, etc."
+  },
+  {
+    "objectID": "decks/publication-tool.html#demo",
+    "href": "decks/publication-tool.html#demo",
+    "title": "Publication tool proof of concept",
+    "section": "Demo",
+    "text": "Demo"
+  },
+  {
+    "objectID": "decks/publication-tool.html#what-have-we-demonstrated",
+    "href": "decks/publication-tool.html#what-have-we-demonstrated",
+    "title": "Publication tool proof of concept",
+    "section": "What have we demonstrated?",
+    "text": "What have we demonstrated?\n\nGet good HTML from our Word files\nGet near-equivalent PDFs from the HTML\nRound-trip: update using Word generated from HTML — no archive of Word files needed\n\n\nNot done yet\n\nImages, charts, tables\nImplement accessible format\nPDF tidying"
+  },
+  {
+    "objectID": "decks/publication-tool.html#comparison-with-xml",
+    "href": "decks/publication-tool.html#comparison-with-xml",
+    "title": "Publication tool proof of concept",
+    "section": "Comparison with XML",
+    "text": "Comparison with XML\n\n\n\nPros\nCons\n\n\n\n\nLess business change\nLimits on structure\n\n\nNo new authoring tool — time and £££\nNo modular text\n\n\nQuicker path to benefits\nOther teams might need XML\n\n\nStaggered transition\n\n\n\n\nTentative recommendation: HTML → PDF as first step"
+  },
+  {
+    "objectID": "decks/publication-tool.html#any-thoughts",
+    "href": "decks/publication-tool.html#any-thoughts",
+    "title": "Publication tool proof of concept",
+    "section": "Any thoughts?",
+    "text": "Any thoughts?"
+  },
+  {
+    "objectID": "decks/ai_tools_in_research.html#research-has-a-retrieval-problem",
+    "href": "decks/ai_tools_in_research.html#research-has-a-retrieval-problem",
+    "title": "AI tools in research work",
+    "section": "Research has a retrieval problem",
+    "text": "Research has a retrieval problem\nA general-purpose model will answer confidently about almost anything — but it hasn’t read last week’s Commons Library briefing, our committee transcripts, or the working papers on the shared drive.\nFor research to be useful, the model needs to ground its answers in the right sources at the right moment — and we need to be able to audit where every claim came from.\n\nFrame the problem in terms the audience already feels. Three things researchers need: fresh specific sources, consistent access across tools, auditability."
+  },
+  {
+    "objectID": "decks/ai_tools_in_research.html#what-researchers-actually-need",
+    "href": "decks/ai_tools_in_research.html#what-researchers-actually-need",
+    "title": "AI tools in research work",
+    "section": "What researchers actually need",
+    "text": "What researchers actually need\n\n\nFresh, specific sources\nBriefings, Hansard, legislation — updated daily, not as of some training cutoff.\n\nConsistent access\nThe same plug, whatever tool the researcher happens to be using.\n\nAuditable answers\nEvery claim traceable back to the source document it came from."
+  },
+  {
+    "objectID": "decks/ai_tools_in_research.html#concept-1-rag",
+    "href": "decks/ai_tools_in_research.html#concept-1-rag",
+    "title": "AI tools in research work",
+    "section": "Concept 1 — RAG",
+    "text": "Concept 1 — RAG\nRetrieval-Augmented Generation. Before the model answers, fetch the most relevant passages from a trusted collection and paste them into the prompt. The model reasons over those passages instead of from memory.\n\n\nResearcherquestion\n\n\n→\n\n\nRetriever\n\n\n→\n\n\nCollectionbriefings, notes, papers\n\n\n→\n\n\nModel +passages\n\n\n→\n\n\nCitedanswer\n\n\nIn short: RAG = library card for the model. It looks things up, then writes.\n\nThe “G” (generation) happens in the model that called the server — not inside the server. The server’s job is retrieval; the host model reads the passages and writes the answer."
+  },
+  {
+    "objectID": "decks/ai_tools_in_research.html#concept-2-mcp",
+    "href": "decks/ai_tools_in_research.html#concept-2-mcp",
+    "title": "AI tools in research work",
+    "section": "Concept 2 — MCP",
+    "text": "Concept 2 — MCP\nModel Context Protocol. An open standard for how AI applications connect to external tools and data sources. Think USB-C for AI: one shape, many peripherals.\n\n\n\n\n\nflowchart LR\n    A[Hansard search]\n    B[Commons Library briefings]\n    C[Committee transcripts]\n    H((AI host&lt;br/&gt;Claude · Copilot&lt;br/&gt;IDE · agent))\n    D[Parliamentary thesaurus]\n    E[Internal shared drive]\n    F[Analytics / stats API]\n    A --- H\n    B --- H\n    C --- H\n    H --- D\n    H --- E\n    H --- F\n\n\n\n\n\n\nEach server wraps one data source or tool. The host — the chat layer or agent — speaks MCP, so it can talk to any server that also speaks MCP."
+  },
+  {
+    "objectID": "decks/ai_tools_in_research.html#mcp-is-the-plumbing-rag-is-one-of-the-appliances",
+    "href": "decks/ai_tools_in_research.html#mcp-is-the-plumbing-rag-is-one-of-the-appliances",
+    "title": "AI tools in research work",
+    "section": "MCP is the plumbing; RAG is one of the appliances",
+    "text": "MCP is the plumbing; RAG is one of the appliances\n\n\n\n\n\nflowchart TD\n    H[\"&lt;b&gt;Host application&lt;/b&gt;&lt;br/&gt;Claude · Copilot · agent\"]\n    M[\"&lt;b&gt;MCP&lt;/b&gt; — common protocol for context & tool calls\"]\n    R[\"&lt;b&gt;Specialist RAG server&lt;/b&gt;&lt;br/&gt;&lt;i&gt;our briefings library&lt;/i&gt;\"]\n    D[Document store&lt;br/&gt;&lt;i&gt;internal drive&lt;/i&gt;]\n    T1[Tool&lt;br/&gt;&lt;i&gt;stats / analytics&lt;/i&gt;]\n    T2[Tool&lt;br/&gt;&lt;i&gt;email, calendar, tickets&lt;/i&gt;]\n    H --&gt; M\n    M --&gt; R\n    M --&gt; D\n    M --&gt; T1\n    M --&gt; T2\n\n\n\n\n\n\nRAG describes what a server does (retrieve, then answer). MCP describes how it speaks to the host. One host can talk to any number of servers; a server can be reused by any host."
+  },
+  {
+    "objectID": "decks/ai_tools_in_research.html#why-a-specialist-rag-server-for-our-research",
+    "href": "decks/ai_tools_in_research.html#why-a-specialist-rag-server-for-our-research",
+    "title": "AI tools in research work",
+    "section": "Why a specialist RAG server for our research",
+    "text": "Why a specialist RAG server for our research\nA general model is a generalist. It hasn’t seen last Tuesday’s briefing, doesn’t know which select committee covers what, and can’t tell you the clauses in a Bill currently in Lords committee.\nA specialist RAG server wraps our own, curated corpus — and uses our taxonomy to find and phrase the right thing."
+  },
+  {
+    "objectID": "decks/ai_tools_in_research.html#what-we-get-from-building-our-own",
+    "href": "decks/ai_tools_in_research.html#what-we-get-from-building-our-own",
+    "title": "AI tools in research work",
+    "section": "What we get from building our own",
+    "text": "What we get from building our own\n\n\nControl over the corpus\nWe choose the sources, the cut-off, and the weighting.\nEvaluation & audit\nWe can measure accuracy, and every citation is traceable.\n\nTaxonomy in the loop\nExpand queries with our subject vocabulary; filter by tags; keep canonical terms in answers.\nReuse everywhere\nOne server plugs into Claude, Copilot, and our own agents.\n\n\nCited, current, and on-vocabulary — the three properties researchers actually need."
+  },
+  {
+    "objectID": "decks/ai_tools_in_research.html#build-once-use-everywhere",
+    "href": "decks/ai_tools_in_research.html#build-once-use-everywhere",
+    "title": "AI tools in research work",
+    "section": "Build once, use everywhere",
+    "text": "Build once, use everywhere\n\n\n\n\n\nflowchart TD\n    C1[Claude&lt;br/&gt;&lt;i&gt;desktop & web&lt;/i&gt;]\n    C2[Microsoft Copilot&lt;br/&gt;&lt;i&gt;Word, Outlook, Teams&lt;/i&gt;]\n    C3[IDE / notebook&lt;br/&gt;&lt;i&gt;for analysts who code&lt;/i&gt;]\n    C4[Our own agents&lt;br/&gt;&lt;i&gt;scheduled, autonomous&lt;/i&gt;]\n    S[\"&lt;b&gt;Specialist RAG server&lt;/b&gt;&lt;br/&gt;&lt;i&gt;one build, curated corpus, cited answers&lt;/i&gt;\"]\n    C1 --&gt; S\n    C2 --&gt; S\n    C3 --&gt; S\n    C4 --&gt; S\n\n\n\n\n\n\nBecause MCP is a standard, the server we build becomes a building block for every AI surface our colleagues use — and for more autonomous agents we might run ourselves."
+  },
+  {
+    "objectID": "decks/ai_tools_in_research.html#when-we-build-our-own-host-layer-too",
+    "href": "decks/ai_tools_in_research.html#when-we-build-our-own-host-layer-too",
+    "title": "AI tools in research work",
+    "section": "When we build our own host layer too",
+    "text": "When we build our own host layer too\nA generic host (Claude, Copilot) is fine for ad-hoc research. But some workflows have a shape of their own — we know which questions to ask before the model starts retrieving. That’s when a bespoke host earns its keep."
+  },
+  {
+    "objectID": "decks/ai_tools_in_research.html#worked-example-constituency-casework",
+    "href": "decks/ai_tools_in_research.html#worked-example-constituency-casework",
+    "title": "AI tools in research work",
+    "section": "Worked example — constituency casework",
+    "text": "Worked example — constituency casework\n\n\nWhere does the constituent live?Scotland · Wales · NI · England — different rules\n\n\n→\n\n\nWhat issue are they raising?Intake form picks a category\n\n\n→\n\n\nRegion-aware retrievalHost passes filters to the RAG server\n\n\nAnswers cite the correct jurisdiction — because the host insisted on knowing it up front."
+  },
+  {
+    "objectID": "decks/ai_tools_in_research.html#why-a-bespoke-host-earns-its-keep",
+    "href": "decks/ai_tools_in_research.html#why-a-bespoke-host-earns-its-keep",
+    "title": "AI tools in research work",
+    "section": "Why a bespoke host earns its keep",
+    "text": "Why a bespoke host earns its keep\n\nAsk the right questions up front — domain knowledge says which inputs change the answer; collect them, don’t hope the model asks\nWorkflow-shaped outputs — case notes, constituent letters, escalation triggers — formats generic chat can’t guarantee\nWired to our systems — cases, diary, correspondence, audit logs — the host glues the RAG answer to the rest of the workflow\n\n\nThe bespoke host still uses the same specialist RAG server — MCP means we don’t have to rebuild retrieval."
+  },
+  {
+    "objectID": "decks/ai_tools_in_research.html#three-things-to-remember",
+    "href": "decks/ai_tools_in_research.html#three-things-to-remember",
+    "title": "AI tools in research work",
+    "section": "Three things to remember",
+    "text": "Three things to remember\n01 · RAG is a pattern, not a product. Retrieval + generation. Useful whenever we need grounded, cited answers over a specific corpus.\n02 · MCP is the common plug. A standard way for hosts and servers to talk — so our work in one place is reusable in all the others.\n03 · A specialist RAG server is leverage. Build once for our corpus; surface it in Claude, Copilot, notebooks, and agents without rebuilding each time."
+  },
+  {
+    "objectID": "decks/ai_tools_in_research.html#questions-welcome",
+    "href": "decks/ai_tools_in_research.html#questions-welcome",
+    "title": "AI tools in research work",
+    "section": "Questions welcome",
+    "text": "Questions welcome"
+  },
+  {
+    "objectID": "decks/data-library.html#what-it-is",
+    "href": "decks/data-library.html#what-it-is",
+    "title": "Parliamentary Data Library",
+    "section": "What it is",
+    "text": "What it is\n\nData applications\nData services\nCatalogue of Parliamentary data sources\n\n\nThese are speaker notes. Press S to open the speaker view."
+  },
+  {
+    "objectID": "decks/data-library.html#data-applications",
+    "href": "decks/data-library.html#data-applications",
+    "title": "Parliamentary Data Library",
+    "section": "Data applications",
+    "text": "Data applications\nList of data applications here\n\nParliamentary Time\nBill Feeds\nCommittee Feeds"
+  },
+  {
+    "objectID": "decks/data-library.html#data-services",
+    "href": "decks/data-library.html#data-services",
+    "title": "Parliamentary Data Library",
+    "section": "Data Services",
+    "text": "Data Services\nContent for this section."
+  },
+  {
+    "objectID": "decks/data-library.html#code-highlighting",
+    "href": "decks/data-library.html#code-highlighting",
+    "title": "Parliamentary Data Library",
+    "section": "Code Highlighting",
+    "text": "Code Highlighting\ndef hello(name):\n    \"\"\"Greet someone properly.\"\"\"\n    return f\"Hello, {name}!\""
+  },
+  {
+    "objectID": "decks/data-library.html#fragment-animations",
+    "href": "decks/data-library.html#fragment-animations",
+    "title": "Parliamentary Data Library",
+    "section": "Fragment Animations",
+    "text": "Fragment Animations\n\nThis appears first\nThen this\nAnd finally this"
+  },
+  {
+    "objectID": "decks/data-library.html#images",
+    "href": "decks/data-library.html#images",
+    "title": "Parliamentary Data Library",
+    "section": "Images",
+    "text": "Images\nUse standard Markdown image syntax:\n\nAlt text"
+  },
+  {
+    "objectID": "decks/data-library.html#thats-it",
+    "href": "decks/data-library.html#thats-it",
+    "title": "Parliamentary Data Library",
+    "section": "That’s It",
+    "text": "That’s It\nEdit this file, push to GitHub, present from your browser."
+  },
+  {
+    "objectID": "decks/sample.html#how-it-works",
+    "href": "decks/sample.html#how-it-works",
+    "title": "Welcome to Your Slides",
+    "section": "How It Works",
+    "text": "How It Works\n\nWrite your slides in Markdown\nSeparate slides with ---\nPush to GitHub and present from anywhere\n\n\nThese are speaker notes. Press S to open the speaker view."
+  },
+  {
+    "objectID": "decks/sample.html#code-highlighting",
+    "href": "decks/sample.html#code-highlighting",
+    "title": "Welcome to Your Slides",
+    "section": "Code Highlighting",
+    "text": "Code Highlighting\ndef hello(name):\n    \"\"\"Greet someone properly.\"\"\"\n    return f\"Hello, {name}!\"\nQuarto highlights code blocks automatically."
+  },
+  {
+    "objectID": "decks/sample.html#fragment-animations",
+    "href": "decks/sample.html#fragment-animations",
+    "title": "Welcome to Your Slides",
+    "section": "Fragment Animations",
+    "text": "Fragment Animations\n\nThis appears first\nThen this\nAnd finally this"
+  },
+  {
+    "objectID": "decks/sample.html#images",
+    "href": "decks/sample.html#images",
+    "title": "Welcome to Your Slides",
+    "section": "Images",
+    "text": "Images\nUse standard Markdown image syntax:\n\nAlt text"
+  },
+  {
+    "objectID": "decks/sample.html#diagrams-with-mermaid",
+    "href": "decks/sample.html#diagrams-with-mermaid",
+    "title": "Welcome to Your Slides",
+    "section": "Diagrams with Mermaid",
+    "text": "Diagrams with Mermaid\n\n\n\n\n\ngraph LR\n    A[Write Markdown] --&gt; B[Push to GitHub]\n    B --&gt; C[GitHub Pages]\n    C --&gt; D[Present]"
+  },
+  {
+    "objectID": "decks/sample.html#themes",
+    "href": "decks/sample.html#themes",
+    "title": "Welcome to Your Slides",
+    "section": "Themes",
+    "text": "Themes\nEach deck specifies its theme in the YAML front matter.\nAvailable themes: green.scss purple.scss plain.scss"
+  },
+  {
+    "objectID": "decks/sample.html#thats-it",
+    "href": "decks/sample.html#thats-it",
+    "title": "Welcome to Your Slides",
+    "section": "That’s It",
+    "text": "That’s It\nEdit this file, push to GitHub, present from your browser."
+  }
+]
