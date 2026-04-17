@@ -1,5 +1,5 @@
 project:
-  type: default
+  type: website
   output-dir: _site
   render:
     - "decks/*.qmd"
@@ -7,6 +7,11 @@ project:
   resources:
     - "images/**"
     - "themes/fonts/**"
+
+website:
+  title: "Slides"
+  navbar: false
+  sidebar: false
 
 format:
   revealjs:
