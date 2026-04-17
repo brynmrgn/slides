@@ -1,2 +1,8 @@
 LOCAL.md
 .DS_Store
+decks/drafts/
+
+/.quarto/
+**/*.quarto_ipynb
+/_site/
+decks/*_files/

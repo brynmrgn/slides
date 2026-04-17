@@ -1,0 +1,30 @@
+project:
+  type: default
+  output-dir: _site
+  render:
+    - "decks/*.qmd"
+    - "index.qmd"
+  resources:
+    - "images/**"
+    - "themes/fonts/**"
+
+format:
+  revealjs:
+    width: 1280
+    height: 720
+    margin: 0.1
+    center: false
+    transition: none
+    progress: true
+    hash: true
+    highlight-style: monokai
+    mermaid:
+      theme: neutral
+
+# Each deck specifies its own theme in its YAML front matter, e.g.:
+#
+#   format:
+#     revealjs:
+#       theme: [default, ../themes/green.scss]
+#
+# Valid themes: green.scss  purple.scss  plain.scss

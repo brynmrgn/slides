@@ -1,0 +1,72 @@
+---
+title: "Welcome to Your Slides"
+subtitle: "A Quarto + Reveal.js setup for GitHub Pages"
+format:
+  revealjs:
+    theme: [default, ../themes/plain.scss]
+---
+
+## How It Works
+
+- Write your slides in Markdown
+- Separate slides with `---`
+- Push to GitHub and present from anywhere
+
+::: notes
+These are speaker notes. Press **S** to open the speaker view.
+:::
+
+---
+
+## Code Highlighting
+
+```python
+def hello(name):
+    """Greet someone properly."""
+    return f"Hello, {name}!"
+```
+
+Quarto highlights code blocks automatically.
+
+---
+
+## Fragment Animations
+
+::: incremental
+- This appears first
+- Then this
+- And finally this
+:::
+
+---
+
+## Images
+
+Use standard Markdown image syntax:
+
+![Alt text](https://placekitten.com/600/400)
+
+---
+
+## Diagrams with Mermaid
+
+```{mermaid}
+graph LR
+    A[Write Markdown] --> B[Push to GitHub]
+    B --> C[GitHub Pages]
+    C --> D[Present]
+```
+
+---
+
+## Themes
+
+Each deck specifies its theme in the YAML front matter.
+
+Available themes: `green.scss` `purple.scss` `plain.scss`
+
+---
+
+## That's It
+
+Edit this file, push to GitHub, present from your browser.

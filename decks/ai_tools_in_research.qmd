@@ -1,0 +1,229 @@
+---
+title: "AI tools in research work"
+subtitle: "How MCP and RAG fit together — and why we might build our own"
+author: "A briefing for research colleagues"
+date: "April 2026"
+title-slide-attributes:
+  data-background-color: "#006548"
+  data-color: "white"
+format:
+  revealjs:
+    theme: [default, ../themes/green.scss]
+    slide-number: c/t
+    progress: true
+    transition: fade
+    width: 1280
+    height: 720
+    margin: 0.08
+---
+
+## Research has a retrieval problem
+
+A general-purpose model will answer confidently about almost anything — but it hasn't read last week's Commons Library briefing, our committee transcripts, or the working papers on the shared drive.
+
+For research to be useful, the model needs to ground its answers in the right sources at the right moment — and we need to be able to audit where every claim came from.
+
+::: notes
+Frame the problem in terms the audience already feels. Three things researchers need: fresh specific sources, consistent access across tools, auditability.
+:::
+
+---
+
+## What researchers actually need
+
+::: {.columns}
+::: {.column width="33%"}
+### Fresh, specific sources
+
+Briefings, Hansard, legislation — updated daily, not as of some training cutoff.
+:::
+
+::: {.column width="33%"}
+### Consistent access
+
+The same plug, whatever tool the researcher happens to be using.
+:::
+
+::: {.column width="33%"}
+### Auditable answers
+
+Every claim traceable back to the source document it came from.
+:::
+:::
+
+---
+
+## Concept 1 — RAG
+
+**Retrieval-Augmented Generation.** Before the model answers, fetch the most relevant passages from a trusted collection and paste them into the prompt. The model reasons over those passages instead of from memory.
+
+<div class="flow">
+  <div class="flow-step">Researcher<br/>question</div>
+  <div class="flow-arrow">→</div>
+  <div class="flow-step">Retriever</div>
+  <div class="flow-arrow">→</div>
+  <div class="flow-step">Collection<br/><small>briefings, notes, papers</small></div>
+  <div class="flow-arrow">→</div>
+  <div class="flow-step">Model +<br/>passages</div>
+  <div class="flow-arrow">→</div>
+  <div class="flow-step">Cited<br/>answer</div>
+</div>
+
+*In short: RAG = library card for the model. It looks things up, then writes.*
+
+::: notes
+The "G" (generation) happens in the model that called the server — not inside the server. The server's job is retrieval; the host model reads the passages and writes the answer.
+:::
+
+---
+
+## Concept 2 — MCP
+
+**Model Context Protocol.** An open standard for how AI applications connect to external tools and data sources. Think USB-C for AI: one shape, many peripherals.
+
+```{mermaid}
+%%| fig-align: center
+flowchart LR
+    A[Hansard search]
+    B[Commons Library briefings]
+    C[Committee transcripts]
+    H((AI host<br/>Claude · Copilot<br/>IDE · agent))
+    D[Parliamentary thesaurus]
+    E[Internal shared drive]
+    F[Analytics / stats API]
+    A --- H
+    B --- H
+    C --- H
+    H --- D
+    H --- E
+    H --- F
+```
+
+Each server wraps one data source or tool. The host — the chat layer or agent — speaks MCP, so it can talk to any server that also speaks MCP.
+
+---
+
+## MCP is the plumbing; RAG is one of the appliances
+
+```{mermaid}
+%%| fig-align: center
+flowchart TD
+    H["<b>Host application</b><br/>Claude · Copilot · agent"]
+    M["<b>MCP</b> — common protocol for context & tool calls"]
+    R["<b>Specialist RAG server</b><br/><i>our briefings library</i>"]
+    D[Document store<br/><i>internal drive</i>]
+    T1[Tool<br/><i>stats / analytics</i>]
+    T2[Tool<br/><i>email, calendar, tickets</i>]
+    H --> M
+    M --> R
+    M --> D
+    M --> T1
+    M --> T2
+```
+
+RAG describes what a server does (retrieve, then answer). MCP describes how it speaks to the host. One host can talk to any number of servers; a server can be reused by any host.
+
+---
+
+## Why a specialist RAG server for our research
+
+A general model is a generalist. It hasn't seen last Tuesday's briefing, doesn't know which select committee covers what, and can't tell you the clauses in a Bill currently in Lords committee.
+
+A specialist RAG server wraps our own, curated corpus — and uses our taxonomy to find and phrase the right thing.
+
+---
+
+## What we get from building our own
+
+::: {.columns}
+::: {.column width="50%"}
+### Control over the corpus
+
+We choose the sources, the cut-off, and the weighting.
+
+### Evaluation & audit
+
+We can measure accuracy, and every citation is traceable.
+:::
+
+::: {.column width="50%"}
+### Taxonomy in the loop
+
+Expand queries with our subject vocabulary; filter by tags; keep canonical terms in answers.
+
+### Reuse everywhere
+
+One server plugs into Claude, Copilot, and our own agents.
+:::
+:::
+
+> *Cited, current, and on-vocabulary — the three properties researchers actually need.*
+
+---
+
+## Build once, use everywhere
+
+```{mermaid}
+%%| fig-align: center
+flowchart TD
+    C1[Claude<br/><i>desktop & web</i>]
+    C2[Microsoft Copilot<br/><i>Word, Outlook, Teams</i>]
+    C3[IDE / notebook<br/><i>for analysts who code</i>]
+    C4[Our own agents<br/><i>scheduled, autonomous</i>]
+    S["<b>Specialist RAG server</b><br/><i>one build, curated corpus, cited answers</i>"]
+    C1 --> S
+    C2 --> S
+    C3 --> S
+    C4 --> S
+```
+
+Because MCP is a standard, the server we build becomes a building block for every AI surface our colleagues use — and for more autonomous agents we might run ourselves.
+
+---
+
+## When we build our own host layer too
+
+A generic host (Claude, Copilot) is fine for ad-hoc research. But some workflows have a shape of their own — we know which questions to ask before the model starts retrieving. That's when a bespoke host earns its keep.
+
+---
+
+## Worked example — constituency casework
+
+<div class="flow">
+  <div class="flow-step">Where does the constituent live?<br/><small>Scotland · Wales · NI · England — different rules</small></div>
+  <div class="flow-arrow">→</div>
+  <div class="flow-step">What issue are they raising?<br/><small>Intake form picks a category</small></div>
+  <div class="flow-arrow">→</div>
+  <div class="flow-step">Region-aware retrieval<br/><small>Host passes filters to the RAG server</small></div>
+</div>
+
+*Answers cite the correct jurisdiction — because the host insisted on knowing it up front.*
+
+---
+
+## Why a bespoke host earns its keep
+
+::: incremental
+- **Ask the right questions up front** — domain knowledge says which inputs change the answer; collect them, don't hope the model asks
+- **Workflow-shaped outputs** — case notes, constituent letters, escalation triggers — formats generic chat can't guarantee
+- **Wired to our systems** — cases, diary, correspondence, audit logs — the host glues the RAG answer to the rest of the workflow
+:::
+
+> *The bespoke host still uses the same specialist RAG server — MCP means we don't have to rebuild retrieval.*
+
+---
+
+## Three things to remember {background-color="#006548"}
+
+**01 · RAG is a pattern, not a product.**
+Retrieval + generation. Useful whenever we need grounded, cited answers over a specific corpus.
+
+**02 · MCP is the common plug.**
+A standard way for hosts and servers to talk — so our work in one place is reusable in all the others.
+
+**03 · A specialist RAG server is leverage.**
+Build once for our corpus; surface it in Claude, Copilot, notebooks, and agents without rebuilding each time.
+
+---
+
+## Questions welcome {.feature background-color="#FDE2CF"}

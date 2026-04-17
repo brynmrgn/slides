@@ -1,0 +1,253 @@
+/*
+ * Plain colour theme — minimal black-on-white with yellow highlight utility.
+ */
+
+/*-- scss:defaults --*/
+
+// Typography
+$font-family-sans-serif:              "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+$presentation-heading-font:           "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+$presentation-heading-font-weight:    600;
+$presentation-heading-text-transform: none;
+$presentation-heading-letter-spacing: -0.01em;
+$presentation-font-size-root:         40px;
+$presentation-h1-font-size:           2.2em;
+$presentation-h2-font-size:           1.6em;
+$presentation-h3-font-size:           1.2em;
+
+// Colours
+$body-bg:                    #ffffff;
+$body-color:                 #1a1a1a;
+$link-color:                 #1a1a1a;
+$presentation-heading-color: #1a1a1a;
+$code-block-bg:              #f5f5f5;
+$selection-bg:               #1a1a1a;
+$selection-color:            #ffffff;
+
+
+/*-- scss:rules --*/
+
+// ── Fonts ──────────────────────────────────────────────────────────────────
+// @import url('fonts/fonts.css');
+
+
+// ── Custom properties ──────────────────────────────────────────────────────
+:root {
+  --slide-bg:           #ffffff;
+  --slide-bg-alt:       #f5f5f5;
+  --slide-text:         #1a1a1a;
+  --slide-text-muted:   #888888;
+  --slide-heading:      #1a1a1a;
+  --slide-accent:       #1a1a1a;
+  --slide-border:       #e0e0e0;
+
+  --variant-dark-bg:    #1a1a1a;
+  --variant-dark-text:  #ffffff;
+  --variant-dark-muted: rgba(255, 255, 255, 0.6);
+  --variant-dark-link:  #ffffff;
+
+  --variant-feature-bg:    #fff9e6;
+  --variant-feature-text:  #1a1a1a;
+  --variant-feature-muted: #888888;
+  --variant-feature-link:  #1a1a1a;
+
+  --plain-highlight:        #fff176;
+  --plain-highlight-strong: #ffee58;
+}
+
+
+// ── Reveal overrides ───────────────────────────────────────────────────────
+
+.reveal .slides { text-align: left; }
+.reveal .slides section { top: 0 !important; padding: 2rem 3rem; }
+body { background: #ffffff; }
+.reveal .slide-background { background: #ffffff; }
+
+
+// ── Headings ───────────────────────────────────────────────────────────────
+
+.reveal h1, .reveal h2, .reveal h3, .reveal h4 {
+  text-align: left;
+  line-height: 1.3;
+  margin-bottom: 1rem;
+}
+
+
+// ── Body text ──────────────────────────────────────────────────────────────
+
+.reveal p { line-height: 1.6; margin-bottom: 0.8em; }
+
+
+// ── Lists ──────────────────────────────────────────────────────────────────
+
+.reveal ul, .reveal ol { margin-left: 1.5em; margin-bottom: 0.8em; }
+.reveal li { margin-bottom: 0.4em; line-height: 1.6; }
+
+
+// ── Links — understated ────────────────────────────────────────────────────
+
+.reveal a {
+  color: var(--slide-text);
+  text-decoration: underline;
+  text-decoration-color: var(--slide-text-muted);
+  text-decoration-thickness: 1px;
+  text-underline-offset: 2px;
+}
+
+.reveal a:hover { text-decoration-color: var(--slide-text); }
+
+
+// ── Code ───────────────────────────────────────────────────────────────────
+
+.reveal pre {
+  width: 100%;
+  background: var(--slide-bg-alt);
+  border: 1px solid var(--slide-border);
+  border-radius: 0.25rem;
+  padding: 1rem;
+  font-size: 0.55em;
+  box-shadow: none;
+}
+
+.reveal code { font-family: "SF Mono", Monaco, "Cascadia Code", Consolas, monospace; }
+
+.reveal p code, .reveal li code {
+  background: var(--slide-bg-alt);
+  padding: 0.1em 0.3em;
+  border-radius: 0.2rem;
+  font-size: 0.9em;
+}
+
+
+// ── Blockquotes ────────────────────────────────────────────────────────────
+
+.reveal blockquote {
+  border-left: 3px solid var(--slide-border);
+  padding: 0.5em 1em;
+  background: var(--slide-bg-alt);
+  font-style: normal;
+  width: auto;
+  box-shadow: none;
+  text-align: left;
+}
+
+
+// ── Images ─────────────────────────────────────────────────────────────────
+
+.reveal img { border: none; box-shadow: none; max-height: 60vh; }
+
+
+// ── Progress bar — subtle ──────────────────────────────────────────────────
+
+.reveal .progress { color: var(--slide-text-muted); height: 3px; }
+
+
+// ── Tables ─────────────────────────────────────────────────────────────────
+
+.reveal table { border-collapse: collapse; }
+
+.reveal table th, .reveal table td {
+  text-align: left;
+  padding: 0.4em 0.8em;
+  border-bottom: 1px solid var(--slide-border);
+}
+
+.reveal table th { font-weight: 600; }
+
+
+// ── Title slide ────────────────────────────────────────────────────────────
+
+.reveal .slides section.title-slide {
+  top: 0 !important;
+  display: flex !important;
+  flex-direction: column !important;
+  height: 100% !important;
+}
+
+.reveal .slides section.title-slide::before { content: ''; flex: 1; }
+
+.reveal .slides section.title-slide p:last-of-type {
+  flex: 1;
+  display: flex !important;
+  align-items: flex-end !important;
+  font-size: 0.5em;
+  color: var(--slide-text-muted);
+  font-weight: 400;
+  margin: 0;
+}
+
+
+// ── Slide variants ─────────────────────────────────────────────────────────
+
+.reveal .dark,
+.reveal .dark h1, .reveal .dark h2, .reveal .dark h3, .reveal .dark h4,
+.reveal .dark p, .reveal .dark li { color: #ffffff; }
+
+.reveal .dark a { color: #ffffff; }
+.reveal .dark pre { background: rgba(255,255,255,0.1); border-color: rgba(255,255,255,0.2); }
+.reveal .dark blockquote { border-left-color: rgba(255,255,255,0.4); background: rgba(255,255,255,0.08); color: #fff; }
+.reveal .dark hr { border-top-color: rgba(255,255,255,0.4); }
+.reveal .dark small { color: rgba(255,255,255,0.6); }
+.reveal .dark table th, .reveal .dark table td { border-bottom-color: rgba(255,255,255,0.2); color: #fff; }
+
+.reveal .dark mark { background: var(--plain-highlight); color: #1a1a1a; }
+
+.reveal .feature,
+.reveal .feature h1, .reveal .feature h2, .reveal .feature h3, .reveal .feature h4,
+.reveal .feature p, .reveal .feature li { color: #1a1a1a; }
+
+
+// ── Highlight ──────────────────────────────────────────────────────────────
+
+.reveal mark {
+  background: var(--plain-highlight);
+  color: var(--slide-text);
+  padding: 0.05em 0.25em;
+  border-radius: 0.15em;
+}
+
+.reveal mark.block {
+  display: block;
+  padding: 0.4em 0.6em;
+  margin: 0.4em 0;
+  background: var(--plain-highlight);
+  border-radius: 0.25em;
+}
+
+.reveal mark.strong { background: var(--plain-highlight-strong); }
+
+
+// ── Flow diagram ───────────────────────────────────────────────────────────
+
+.reveal .flow { display: flex; align-items: center; justify-content: center; gap: 0; margin-top: 2em; }
+
+.reveal .flow .flow-step {
+  background: #1a1a1a;
+  color: #fff;
+  padding: 1em;
+  width: 160px;
+  text-align: center;
+  border-radius: 0.3em;
+  font-size: 0.7em;
+}
+
+.reveal .flow .flow-arrow { font-size: 1.5em; padding: 0 0.3em; color: var(--slide-text); }
+
+
+// ── Overlay panel ──────────────────────────────────────────────────────────
+
+.reveal .overlay {
+  background: rgba(26, 26, 26, 0.85);
+  padding: 1.5em 2em;
+  border-radius: 0.3em;
+  color: #fff;
+}
+
+.reveal .overlay h1, .reveal .overlay h2, .reveal .overlay h3, .reveal .overlay h4,
+.reveal .overlay p, .reveal .overlay li { color: #fff; }
+
+
+// ── Mermaid diagrams ───────────────────────────────────────────────────────
+
+.reveal .mermaid { max-width: 100%; overflow: visible; }
+.reveal .mermaid svg { max-width: 100%; max-height: 65vh; height: auto; }

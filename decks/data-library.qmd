@@ -1,0 +1,66 @@
+---
+title: "Parliamentary Data Library"
+format:
+  revealjs:
+    theme: [default, ../themes/green.scss]
+---
+
+## What it is
+
+- Data applications
+- Data services
+- Catalogue of Parliamentary data sources
+
+::: notes
+These are speaker notes. Press **S** to open the speaker view.
+:::
+
+---
+
+## Data applications
+
+List of data applications here
+
+- Parliamentary Time
+- Bill Feeds
+- Committee Feeds
+
+---
+
+## Data Services
+
+Content for this section.
+
+---
+
+## Code Highlighting
+
+```python
+def hello(name):
+    """Greet someone properly."""
+    return f"Hello, {name}!"
+```
+
+---
+
+## Fragment Animations
+
+::: incremental
+- This appears first
+- Then this
+- And finally this
+:::
+
+---
+
+## Images
+
+Use standard Markdown image syntax:
+
+![Alt text](https://placekitten.com/600/400)
+
+---
+
+## That's It
+
+Edit this file, push to GitHub, present from your browser.

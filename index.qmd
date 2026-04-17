@@ -1,0 +1,11 @@
+---
+title: "Slide Decks"
+format: html
+---
+
+## Presentations
+
+- [Sample](decks/sample.html)
+- [Parliamentary Data Library](decks/data-library.html)
+- [Publication tool proof of concept](decks/publication-tool.html)
+- [AI tools in research work](decks/ai_tools_in_research.html)
